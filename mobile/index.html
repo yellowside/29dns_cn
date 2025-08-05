@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国移动DNS - 29DNS</title>
+    <meta name="keywords" content="PublicDNS,FreeDNS,公共DNS服务器,DNS服务器,海外DNS,IPv4,IPv6,DoT,DoH">
+	<meta name="author" content="冰豆">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header id="header"></header>
+<div class="width_center" style="margin-top:80px"><ul class="button-group"><li><button class="color blue button">中国移动 DNS</button></li></ul></div>				
+<section id="box_shadow" class="width_box">
+        <p><b>中国移动 IPv6 DNS</b></p>
+		<p>提供中国移动宽带自动分配的两个 IPv6 地址</p>
+		<p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8088::a"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8088::b"></p>
+        <p>安徽移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8030:2000::1"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8030:2000::2"></p>
+        <p>海南移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:805e:2000::6666"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:805e:2000::8888"></p>
+        <p>河北移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8008:2000::1"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8008:2000:100::1"></p>
+        <p>广东移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8057:2000:2::8"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8057:2000:6::8"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8057:2000::8"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8057:2060::10"></p>
+        <p>北京移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8000:2000:0:70::1"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8000:2000:0:170::1"></p>
+        <p>江苏移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8020:2000::6"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8020:2000::8"></p>
+        <p>广西移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:805c:2000:3000::1000"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:805c:2000:3001::1000"></p>
+        <p>湖北移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:804c:2000:1::1"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:804c:2000:2::1"></p>
+        <p>湖南移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8050:2000:1000::1"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8050:2000::1"></p>
+        <p>甘肃移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8074:20ff:1000::a"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8074:20ff:1000::b"></p>
+        <p>辽宁移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8014:2000::1"></p>
+        <p>浙江移动 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8028:2000::1111"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2409:8028:2000::2222"></p>
+</section>
+<footer id="footer"></footer>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$('#header').load('../header.html', function(response, status, xhr) {
+  if (status === "error") {
+    console.error("加载失败");
+  }
+});
+$('#footer').load('../footer.html', function(response, status, xhr) {
+        if (status === "error") {
+            console.error("加载失败");
+        } else {
+            var currentYear = new Date().getFullYear();
+            $('#footer #currentYear').text(currentYear);
+        }
+    });
+</script>
+<script> 
+function oCopy(obj){ 
+obj.select(); 
+js=obj.createTextRange(); 
+js.execCommand("Copy") 
+} 
+</script>
+<div id="scrollTop" title="回到顶部">TOP</div>
+<script>
+const scrollTopBtn = document.getElementById("scrollTop");
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+window.addEventListener('scroll', () => {
+    const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollPosition > 0) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
+</script>
+</body>
+</html>

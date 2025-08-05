@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国电信DNS - 29DNS</title>
+    <meta name="keywords" content="PublicDNS,FreeDNS,公共DNS服务器,DNS服务器,海外DNS,IPv4,IPv6,DoT,DoH">
+	<meta name="author" content="冰豆">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header id="header"></header>	
+<div class="width_center" style="margin-top:80px"><ul class="button-group"><li><button class="color blue button">中国电信 DNS</button></li></ul></div>			
+<section id="box_shadow" class="width_box">
+        <p><b>中国电信 IPv6 DNS</b></p>注意不同省份分配的DNS是不同的，使用自动分配的本地DNS肯定更快一些。<p>河北电信 IPv6 DNS: 如果用河北电信的宽带应该会自动分配这两个IP<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:4c:4008::1"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:4c:4808::1"></p>
+        <p>广东电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:1f:1::1"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:1f:1::33"></p>
+        <p>山东电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:4e:800::66"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:4e::66"></p>
+        <p>四川电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:56:4000:8000::69"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:56:4000::218"></p>
+        <p>湖北电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:d:0:100::6"></p>
+        <p>陕西电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:f:a::6"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:f:a00b::6"></p>
+        <p>安徽电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:46:4088::4088"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:46:4888::4888"></p>
+        <p>贵州电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:4a:4400:3::67"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:4a:4400:3::167"></p>
+        <p>天津电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:45::6666"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:45::8888"></p>
+        <p>新疆电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:51:c800:4::4"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:51:c800:8::8"></p>
+        <p>广西电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:9:2000:100"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:9::100"></p>
+        <p>湖南电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:50:5000::80"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:50:c800::210"></p>
+        <p>福建电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:14:e000::1"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:14:6000::1"></p>
+        <p>江苏电信 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:5a::6666"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="240e:5b::6666"></p>
+</section>
+<footer id="footer"></footer>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$('#header').load('../header.html', function(response, status, xhr) {
+  if (status === "error") {
+    console.error("加载失败");
+  }
+});
+$('#footer').load('../footer.html', function(response, status, xhr) {
+        if (status === "error") {
+            console.error("加载失败");
+        } else {
+            var currentYear = new Date().getFullYear();
+            $('#footer #currentYear').text(currentYear);
+        }
+    });
+</script>
+<script> 
+function oCopy(obj){ 
+obj.select(); 
+js=obj.createTextRange(); 
+js.execCommand("Copy") 
+} 
+</script>
+<div id="scrollTop" title="回到顶部">TOP</div>
+<script>
+const scrollTopBtn = document.getElementById("scrollTop");
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+window.addEventListener('scroll', () => {
+    const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollPosition > 0) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
+</script>
+</body>
+</html>

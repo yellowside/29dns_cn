@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>境外DNS - 29DNS</title>
+    <meta name="keywords" content="PublicDNS,FreeDNS,公共DNS服务器,DNS服务器,海外DNS,IPv4,IPv6,DoT,DoH">
+	<meta name="author" content="冰豆">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header id="header"></header>
+<div class="width_center" style="margin-top:80px"><ul class="button-group"><li><button class="color blue button">境外 DNS</button></li></ul></div>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://developers.google.cn/speed/public-dns/docs/using?hl=zh-cn" target="_blank">Google Public DNS</a></b></p>
+	<p>Google 提供的公共免费 DNS，应该是国外最流行的 公共 DNS 了，同时提供 IPv4/IPv6/DoT/DoH 服务。<b>国内网络有波动</b></p>
+	<p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="8.8.8.8"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="8.8.4.4"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2001:4860:4860::8888"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2001:4860:4860::8844"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns.google/dns-query"></p>
+    <p>只针对 IPv6 的 DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns64.dns.google/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns.google"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://one.one.one.one/" target="_blank">Cloudflare DNS</a></b></p>
+	<p>Cloudflare 与 APNIC 联合推出的号称全球最快的 DNS 服务。APNIC 是一个管理亚太与大洋洲地区 IP 地址分配的非盈利性组织，1.1.1.1 归 APNIC 所有，现在交给 Cloudflare 来提供 DNS 服务，同时提供 IPv4/IPv6/DoT/DoH 服务。</p>
+	<p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="1.1.1.1"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="1.0.0.1"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2606:4700:4700::1111"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2606:4700:4700::1001"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://cloudflare-dns.com/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns.cloudflare.com/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://1.1.1.1/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://1.0.0.1/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="1dot1dot1dot1.cloudflare-dns.com"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns.cloudflare.com"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="one.one.one.one"></p>
+    <p><b>安全版 (拦截恶意代码)</b><br>Block malware</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="1.1.1.2"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="1.0.0.2"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2606:4700:4700::1112"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2606:4700:4700::1002"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://security.cloudflare-dns.com/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="security.cloudflare-dns.com"></p>
+    <p><b>家庭版 (拦截恶意代码和成人内容)</b><br>Block malware and adult content</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="1.1.1.3"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="1.0.0.3"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2606:4700:4700::1113"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2606:4700:4700::1003"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://family.cloudflare-dns.com/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="family.cloudflare-dns.com"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://www.quad9.net/" target="_blank">IBM Quad9 DNS</a></b></p>
+	<p>IBM 发起的 Quad9 提供的公共免费 DNS 服务，同时包含 IPv4/IPv6/DoT/DoH</p>
+	<p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="9.9.9.9"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="149.112.112.112"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="149.112.112.9"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:fe::fe"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:fe::9"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:fe::fe:9"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns.quad9.net/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns9.quad9.net/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns.quad9.net"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns9.quad9.net"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="http://dns.sb/" target="_blank">DNS.SB</a></b></p>
+    <p>德国的一个公共 DNS 服务商 提供的，除了德国之外，还在荷兰/英国/爱沙尼亚/俄罗斯/美国/加拿大/日本/新加坡/印度/韩国/香港/澳大利亚等很多国家和地区有服务器，同时提供 IPv4/IPv6/DoT/DoH 服务。</p>
+    <p>其中 IPv4 和 IPv6 地址同样可用于 DoT 和 DoH。</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="185.222.222.222"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="45.11.45.11"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a09::"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a11::"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://doh.dns.sb/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://doh.sb/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns.sb/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dot.sb"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns.sb"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://umbrella.cisco.com/" target="_blank">Cisco OpenDNS/Cisco Umbrella</a></b></p>
+	<p>由美国老牌通信设备商 Cisco 思科 提供的公共 DNS 服务，其中基础版和家庭版提供免费的 IPv4/IPv6/DoH 服务，后改名 Cisco Umbrella。</p>
+	<p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="208.67.222.222"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="208.67.220.220"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="208.67.222.220"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="208.67.220.222"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:119:35::35"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:119:53::53"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://doh.opendns.com/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns.opendns.com/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://doh.umbrella.com/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns.umbrella.com/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns.sse.cisco.com/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns.opendns.com"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns.umbrella.com"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns.sse.cisco.com"></p>
+    <p><b>OpenDNS FamilyShield</b><br>OpenDNS 家庭盾版 DNS，官方介绍是 block adult content 阻止成人内容。</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="208.67.222.123"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="208.67.220.123"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:119:35::123"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:119:53::123"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://familyshield.opendns.com/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://doh.familyshield.opendns.com/dns-query"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://familyshield.sse.cisco.com/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="familyshield.opendns.com"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="familyshield.sse.cisco.com"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://dns.yandex.com/" target="_blank">Yandex DNS</a></b></p>
+	<p>由俄国最大的搜索引擎 Yandex 提供的 DNS 服务，提供基础版/安全版/家庭版三个版本的 IPv4/IPv6/DoH/DoT 服务。其中每个版本的 IPv4 和 IPv6 第一个地址同样可用于 DoH 和 DoT。</p>
+	<p><b>基础版（快速可靠）</b><br>Quick and reliable DNS</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="77.88.8.8"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="77.88.8.1"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a02:6b8::feed:0ff"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a02:6b8:0:1::feed:0ff"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://common.dot.dns.yandex.net"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://77.88.8.8"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://2a02:6b8::feed:0ff"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="common.dot.dns.yandex.net"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="77.88.8.8"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a02:6b8::feed:0ff"></p>
+    <p><b>安全版（病毒和钓鱼防御）</b><br>Protection from virus and fraudulent content</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="77.88.8.88"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="77.88.8.2"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a02:6b8::feed:bad"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a02:6b8:0:1::feed:bad"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://safe.dot.dns.yandex.net"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="safe.dot.dns.yandex.net"></p>
+    <p><b>家庭版（拦截成人内容）</b><br>Without adult content</p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="77.88.8.7"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="77.88.8.3"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a02:6b8::feed:a11"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a02:6b8:0:1::feed:a11"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://family.dot.dns.yandex.net"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="family.dot.dns.yandex.net"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://securedns.dnsbycomodo.com/" target="_blank">COMODO SecureDNS</a></b></p>
+	<p>由美国知名的 IT 安全服务商 COMODO 提供的安全 DNS</p>
+	<p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="8.26.56.26"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="8.20.247.20"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="http://www.ultradns.com/" target="_blank">Neustar UltraDNS</a></b></p>
+	<p>由美国信息服务公司 Neustar 提供的公共免费 DNS 服务</p>
+	<p><b>基础版（快速可靠）</b><br>Unfiltered Resolution</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="64.6.64.6"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="64.6.65.6"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:74:1b::1:1"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2620:74:1c::2:2"></p>
+    <p><b>安全版 (病毒和钓鱼防御)</b><br>Threat Protection</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="156.154.70.2"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="156.154.71.2"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2610:a1:1018::2"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2610:a1:1019::2"></p>
+    <p><b>家庭版 (拦截成人内容)</b><br>Family Secure</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="156.154.70.3"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="156.154.71.3"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2610:a1:1018::3"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2610:a1:1019::3"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://adguard-dns.io/zh_cn/public-dns.html" target="_blank">AdGuard DNS</a></b></p>
+	<p>由AdGuard 提供的公共免费 DNS 服务</p>
+	<p><b>默认服务器 (拦截广告和跟踪器)</b><br>AdGuard DNS will block ads and trackers.</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="94.140.14.14"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="94.140.15.15"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a10:50c0::ad1:ff"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a10:50c0::ad2:ff"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://dns.adguard-dns.com/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="dns.adguard-dns.com"></p>
+    <p><b>无过滤服务器 (不拦截广告、跟踪器)</b><br>AdGuard DNS will not block ads, trackers, or any other DNS requests.</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="94.140.14.140"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="94.140.14.141"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a10:50c0::1:ff"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a10:50c0::2:ff"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://unfiltered.adguard-dns.com/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="unfiltered.adguard-dns.com"></p>
+    <p><b>家庭保护服务器 (拦截成人内容)</b><br>AdGuard DNS will block ads, trackers, adult content, and enable Safe Search and Safe Mode, where possible.</p>
+    <p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="94.140.14.15"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="94.140.15.16"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a10:50c0::bad1:ff"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a10:50c0::bad2:ff"></p>
+    <p>DoH: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="https://family.adguard-dns.com/dns-query"></p>
+    <p>DoT: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="family.adguard-dns.com"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a>Level 3 Parent DNS</a></b></p>
+	<p>由美国 Level 3 Parent 公司 提供的 DNS 服务器，如果 Windows 升级出现问题，可以使用这个 DNS 服务器。</p>
+	<p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="4.2.2.1"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="4.2.2.2"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="4.2.2.3"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="4.2.2.4"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="4.2.2.5"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="4.2.2.6"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://www.freenom.com/" target="_blank">Freenom World DNS</a></b></p>
+	<p>由免费域名商 Freenom 提供的 公共DNS服务，据说国内也可以使用，速度还行。</p>
+	<p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="80.80.80.80"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="80.80.81.81"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://gcore.com/public-dns" target="_blank">Gcore DNS</a></b></p>
+	<p>由 Gcore 公司 提供的 DNS 服务器，是欧洲最快的公共 DNS 之一。</p>
+	<p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="95.85.95.85"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2.56.220.2"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a03:90c0:999d::1"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2a03:90c0:9992::1"></p>
+</section>
+<section id="box_shadow" class="width_box">
+    <p><b><a href="https://safedns.com/" target="_blank">Safe DNS</a></b></p>
+	<p>通过过滤恶意网站和提供家长控制功能，确保用户的安全和隐私。</p>
+	<p>IPv4: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="195.46.39.39"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="195.46.39.40"></p>
+    <p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2001:67c:2778::3939"></p>
+    <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2001:67c:2778::3940"></p>
+</section>
+<footer id="footer"></footer>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$('#header').load('../header.html', function(response, status, xhr) {
+  if (status === "error") {
+    console.error("加载失败");
+  }
+});
+$('#footer').load('../footer.html', function(response, status, xhr) {
+        if (status === "error") {
+            console.error("加载失败");
+        } else {
+            var currentYear = new Date().getFullYear();
+            $('#footer #currentYear').text(currentYear);
+        }
+    });
+</script>
+<script> 
+function oCopy(obj){ 
+obj.select(); 
+js=obj.createTextRange(); 
+js.execCommand("Copy") 
+} 
+</script>
+<div id="scrollTop" title="回到顶部">TOP</div>
+<script>
+const scrollTopBtn = document.getElementById("scrollTop");
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+window.addEventListener('scroll', () => {
+    const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollPosition > 0) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
+</script>
+</body>
+</html>

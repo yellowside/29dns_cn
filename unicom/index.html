@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中国联通DNS - 29DNS</title>
+    <meta name="keywords" content="PublicDNS,FreeDNS,公共DNS服务器,DNS服务器,海外DNS,IPv4,IPv6,DoT,DoH">
+	<meta name="author" content="冰豆">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<header id="header"></header>
+<div class="width_center" style="margin-top:80px"><ul class="button-group"><li><button class="color blue button">中国联通 DNS</button></li></ul></div>			
+<section id="box_shadow" class="width_box">
+        <p><b>中国联通 IPv6 DNS</b></p>
+		<p>如果用中国联通的宽带可能会自动分配这三个IP，具体需要自己测试。</p>
+		<p>IPv6: <input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8899::8"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8888::8"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8000::8"></p>
+        <p>安徽联通 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8000:c000::8888"></p>
+        <p>重庆联通 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8663::2"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8662::2"></p>
+        <p>上海联通 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8026:480:112::6666"></p>
+        <p>江西联通 IPv6 DNS:<input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8000:eeee::e"></p>
+        <p><input class="ips" name="" onClick="oCopy(this)" type="text" size="15" value="2408:8000:eeee::f"></p>
+</section>
+<footer id="footer"></footer>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$('#header').load('../header.html', function(response, status, xhr) {
+  if (status === "error") {
+    console.error("加载失败");
+  }
+});
+$('#footer').load('../footer.html', function(response, status, xhr) {
+        if (status === "error") {
+            console.error("加载失败");
+        } else {
+            var currentYear = new Date().getFullYear();
+            $('#footer #currentYear').text(currentYear);
+        }
+    });
+</script>
+<script> 
+function oCopy(obj){ 
+obj.select(); 
+js=obj.createTextRange(); 
+js.execCommand("Copy") 
+} 
+</script>
+<div id="scrollTop" title="回到顶部">TOP</div>
+<script>
+const scrollTopBtn = document.getElementById("scrollTop");
+scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+window.addEventListener('scroll', () => {
+    const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollPosition > 0) {
+        scrollTopBtn.classList.add('show');
+    } else {
+        scrollTopBtn.classList.remove('show');
+    }
+});
+</script>
+</body>
+</html>

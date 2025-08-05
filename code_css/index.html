@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS 格式化/压缩 - 29DNS</title>
+    <meta name="keywords" content="CSS格式化,CSS压缩,CSS美化工具,在线CSS优化,CSS代码整理,CSS代码压缩,CSS代码高亮,CSS缩小化">
+  <meta name="description" content="免费在线CSS格式化和压缩工具，智能美化杂乱CSS代码并高效压缩，支持语法高亮、自动缩进。提升代码可读性，减少文件体积，是前端开发者必备的样式表优化利器！">
+	<meta name="author" content="冰豆">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/codemirror.css">
+<link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/theme/mdn-like.css">
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/codemirror.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/js-beautify/1.14.0/beautifier.min.js"></script>
+<script src="https://unpkg.com/csso@5.0.2/dist/csso.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/mode/css/css.js"></script>
+</head>
+<body>
+<header id="header"></header>
+<section id="box_shadow" class="width_box" style="margin-top:80px">
+    <p><b>CSS 格式化/压缩</b></p>
+    <div class="form-group">
+        <label class="form-label">代码：</label>
+        <div class="form-control-wrap">
+            <textarea id="code" class="textarea textarea-bordered "></textarea>
+        </div>
+    </div>
+    <p>
+	<label class="checkbox-inline"><input type="checkbox" id="delnotes"> 删除注释</label>
+    <label class="checkbox-inline"><input type="checkbox" id="tolower"> 属性转小写</label>
+    <label class="checkbox-inline"><input type="checkbox" id="chk"> 横向排列</label>
+    <button class="color blue button" onClick="format()">格式化</button>
+    <button class="color blue button" onClick="compress()">压缩</button>
+    <button class="color blue button" onClick="reset()">清空</button>
+    </p>
+</section>
+<footer id="footer"></footer>
+<script>
+var defaultvalue = `body {
+    border: 1px solid #eee;
+    height: 100%;
+    color: #fff;
+    /*background-color: skyblue;*/
+}`;
+
+// 使用 val() 设置 textarea 内容
+$("#code").val(defaultvalue);
+
+// 初始化 CodeMirror 编辑器
+var initcodemirror = CodeMirror.fromTextArea(document.getElementById("code"), {
+    mode: "css",
+    theme: "mdn-like",
+    indentUnit: 2,
+    smartIndent: true,
+    tabSize: 4,
+    readOnly: false,
+    showCursorWhenSelecting: true,
+    lineNumbers: true,
+    lineWrapping: true,
+    matchBrackets: true,
+});
+
+// 正则表达式用于属性转换为小写
+var reg = /([\s|\{|;])([a-z\-]+)(\s*):/ig;
+
+// CSS 格式化与压缩工具
+var cssChanger = {
+    format: function(s) {
+        s = s.toString();
+        s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+        s = s.replace(/(\s*)\}/g, "$1}");
+        s = s.replace(/;\s*;/g, ";");
+        s = s.replace(/\,[\s\.\#\d]*{/g, "{");
+        s = s.replace(/([^\s])\{([^\s])/g, "$1 {\n\t$2");
+        s = s.replace(/([^\s])\}([^\n]*)/g, "$1\n}\n$2");
+        s = s.replace(/([^\s]);([^\s\}])/g, "$1;\n\t$2");
+
+        if ($("#delnotes").prop("checked")) {
+            s = s.replace(/\/\*(.|\n)*?\*\//g, "\n\t");
+        }
+
+        s = s.replace(/\n(\n)*( *)*(\n)*\n/g, "");
+
+        if ($("#chk").prop("checked")) {
+            s = s.replace(/(\r|\n|\t)/g, "");
+            s = s.replace(/(})/g, "$1\r\n");
+        }
+
+        if ($("#tolower").prop("checked")) {
+            s = s.replace(reg, function(match, p1, p2, p3) {
+                return p1 + p2.toLowerCase() + p3 + ":";
+            });
+        }
+
+        s = s.replace(/\s+\*\//g, "*/");
+        return s.trim();
+    },
+    pack: function(s) {
+        s = s.replace(/\s*([\{\}\:\;\,])\s*/g, "$1");
+        s = s.replace(/\,[\s\.\#\d]*\{/g, "{");
+        s = s.replace(/;\s*;/g, ";");
+
+        if ($("#tolower").prop("checked")) {
+            s = s.replace(reg, function(match, p1, p2, p3) {
+                return p1 + p2.toLowerCase() + p3 + ":";
+            });
+        }
+
+        if ($("#delnotes").prop("checked")) {
+            s = s.replace(/\/\*(.|\n)*?\*\//g, "");
+        }
+
+        const match = s.match(/^\s*(\S+(\s+\S+)*)\s*$/);
+        return match ? match[1] : "";
+    }
+};
+
+function format() {
+    let code = initcodemirror.getValue();
+    let formatted = cssChanger.format(code);
+    initcodemirror.setValue(formatted);
+}
+
+function compress() {
+    let code = initcodemirror.getValue();
+    let compressed = cssChanger.pack(code);
+    initcodemirror.setValue(compressed);
+}
+
+function reset() {
+    $("#code").val('');
+    initcodemirror.setValue('');
+}
+</script>
+<script>
+$('#header').load('../header.html', function(response, status, xhr) {
+  if (status === "error") {
+    console.error("加载失败");
+  }
+});
+$('#footer').load('../footer.html', function(response, status, xhr) {
+        if (status === "error") {
+            console.error("加载失败");
+        } else {
+            var currentYear = new Date().getFullYear();
+            $('#footer #currentYear').text(currentYear);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Base64编码/解码 - 29DNS</title>
+    <meta name="keywords" content="Base64编码, Base64解码, 在线Base64工具,, Base64字符串, 免费编码工具">
+  <meta name="description" content="免费在线Base64编码/解码工具，一键编码解码，轻松处理Base64字符串，提升工作效率！">
+	<meta name="author" content="冰豆">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+<style>
+.base_label {font-size:1.1em;margin-bottom:15px;display:block;color:#34495e;}
+.base_textarea {border:1px solid #cad2c5;border-radius:10px;padding:20px;font-size:1.1em;width:100%;min-height:200px;resize:vertical;box-sizing: border-box; background-color: #fff;}
+.base_textarea:focus {border-color:#4caf50;box-shadow:0 0 10px rgba(76,175,80,0.3);outline:none;}
+.base_button-container {display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+.base_button {background-color:#4caf50;border:none;border-radius:10px;color:#fff;cursor:pointer;font-size:1.1em;padding:10px 20px;min-width:180px;transition:background-color 0.3s,transform 0.2s;box-shadow:0 3px 8px rgba(0,0,0,0.1);}
+.base_button:hover {background-color:#45a049;transform:translateY(-3px);cursor:pointer;}
+.base_copy-button {background-color:#3498db;border:none;border-radius:10px;color:#fff;cursor:pointer;font-size:1.1em;padding:10px 20px;min-width:180px;transition:background-color 0.3s,transform 0.2s;box-shadow:0 3px 8px rgba(0,0,0,0.1);}
+.base_copy-button:hover {background-color:#2980b9;transform:translateY(-3px);cursor:pointer;}
+.base_button:disabled,.base_copy-button:disabled {background-color:#cccccc;cursor:not-allowed;transform:none;box-shadow:none;}
+.base_button:disabled:hover,.base_copy-button:disabled:hover {background-color:#cccccc;transform:none;cursor:not-allowed;}
+.base_feedback {min-height:30px;color:#e74c3c;font-size:1.1em;font-weight:500;}
+@media (max-width:768px) {.base_container {padding:20px;}
+.base_textarea {max-width:100%;min-height:200px;font-size:1.1em;}
+.base_button,.base_copy-button {padding:10px 20px;font-size:1.1em;min-width:150px;}
+}
+</style>
+</head>
+<body>
+<header id="header"></header>	
+<section id="box_shadow" class="width_box" style="margin-top:80px">
+    <p><b>Base64编码/解码</b></p>
+    <div>
+        <label class="base_label" for="input-text">输入文本</label>
+        <textarea 
+          id="input-text" 
+          class="base_textarea" 
+          placeholder="请输入要转换的文本(解码结果将会显示在这里)"
+          aria-label="输入要编码的文本或解码后的结果"
+        ></textarea>
+        <div class="base_button-container">
+          <button id="encode-button" class="base_button">编码</button>
+          <button id="copy-input-button" class="base_copy-button" disabled>复制</button>
+          <button id="clear-input-button" class="base_button" disabled>清空</button>
+        </div>
+        <div id="input-feedback" class="base_feedback"></div>
+      </div>
+      <div>
+        <label class="base_label" for="output-text">转换结果</label>
+        <textarea 
+          id="output-text" 
+          class="base_textarea" 
+          placeholder="转换结果将在此处显示(请输入要解码的Base64编码)"
+          aria-label="输入要解码的Base64编码或查看编码结果"
+        ></textarea>
+        <div class="base_button-container">
+          <button id="decode-button" class="base_button">解码</button>
+          <button id="copy-output-button" class="base_copy-button" disabled>复制</button>
+          <button id="clear-output-button" class="base_button" disabled>清空</button>
+        </div>
+        <div id="output-feedback" class="base_feedback"></div>
+      </div>
+</section>
+<footer id="footer"></footer>
+<script>
+    // DOM 元素引用
+    const inputText = document.getElementById('input-text');
+    const outputText = document.getElementById('output-text');
+    const encodeButton = document.getElementById('encode-button');
+    const decodeButton = document.getElementById('decode-button');
+    const copyInputButton = document.getElementById('copy-input-button');
+    const copyOutputButton = document.getElementById('copy-output-button');
+    const clearInputButton = document.getElementById('clear-input-button');
+    const clearOutputButton = document.getElementById('clear-output-button');
+    const inputFeedback = document.getElementById('input-feedback');
+    const outputFeedback = document.getElementById('output-feedback');
+
+    // 更新按钮状态
+    function updateButtonStates() {
+      copyInputButton.disabled = !inputText.value;
+      clearInputButton.disabled = !inputText.value;
+      copyOutputButton.disabled = !outputText.value;
+      clearOutputButton.disabled = !outputText.value;
+    }
+
+    // 显示反馈信息
+    function showFeedback(element, message) {
+      element.textContent = message;
+      setTimeout(() => element.textContent = '', 3000);
+    }
+
+    // 输入变化监听
+    inputText.addEventListener('input', updateButtonStates);
+    outputText.addEventListener('input', updateButtonStates);
+
+    // 复制输入文本
+    copyInputButton.addEventListener('click', function() {
+      inputText.select();
+      try {
+        document.execCommand('copy');
+        showFeedback(inputFeedback, '已复制到剪贴板');
+      } catch (err) {
+        showFeedback(inputFeedback, '复制失败: ' + err.message);
+      }
+    });
+
+    // 复制输出文本
+    copyOutputButton.addEventListener('click', function() {
+      outputText.select();
+      try {
+        document.execCommand('copy');
+        showFeedback(outputFeedback, '已复制到剪贴板');
+      } catch (err) {
+        showFeedback(outputFeedback, '复制失败: ' + err.message);
+      }
+    });
+
+    // 清空输入
+    clearInputButton.addEventListener('click', function() {
+      inputText.value = '';
+      updateButtonStates();
+      showFeedback(inputFeedback, '已清空');
+    });
+
+    // 清空输出
+    clearOutputButton.addEventListener('click', function() {
+      outputText.value = '';
+      updateButtonStates();
+      showFeedback(outputFeedback, '已清空');
+    });
+
+    // Base64 编码
+    encodeButton.addEventListener('click', function() {
+      try {
+        if (!inputText.value) {
+          showFeedback(outputFeedback, '请输入要编码的文本');
+          return;
+        }
+        const text = inputText.value;
+        const base64 = btoa(unescape(encodeURIComponent(text)));
+        outputText.value = base64;
+        updateButtonStates();
+        showFeedback(outputFeedback, '编码成功');
+      } catch (err) {
+        showFeedback(outputFeedback, '编码失败: ' + err.message);
+      }
+    });
+
+    // Base64 解码
+    decodeButton.addEventListener('click', function() {
+      try {
+        if (!outputText.value) {
+          showFeedback(inputFeedback, '请输入要解码的Base64编码');
+          return;
+        }
+        const base64 = outputText.value;
+        const text = decodeURIComponent(escape(atob(base64)));
+        inputText.value = text;
+        updateButtonStates();
+        showFeedback(inputFeedback, '解码成功');
+      } catch (err) {
+        showFeedback(inputFeedback, '解码失败: 请检查Base64编码格式');
+      }
+    });
+
+    // 初始化按钮状态
+    updateButtonStates();
+  </script>
+<script>
+$('#header').load('../header.html', function(response, status, xhr) {
+  if (status === "error") {
+    console.error("加载失败");
+  }
+});
+$('#footer').load('../footer.html', function(response, status, xhr) {
+        if (status === "error") {
+            console.error("加载失败");
+        } else {
+            var currentYear = new Date().getFullYear();
+            $('#footer #currentYear').text(currentYear);
+        }
+    });
+</script>
+</body>
+</html>

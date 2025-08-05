@@ -1,0 +1,118 @@
+﻿<nav class="header">
+    <div class="container clearfix">
+        <div class="fl left"><a href="../" target="_self"><img src="../images/logo.svg" /></a></div>
+        <div class="fr nav" id="cssmenu">
+            <ul class="navbar_nav" data-in="fadeInDown" data-out="fadeOutUp">
+                <li class="active"><a href="../" target="_self">首 页</a></li>
+                <li class="dropdown">
+                    <a>公共DNS</a>
+                    <div class="dropdown_menu">
+                        <a href="../" target="_self">国内DNS</a>
+                        <a href="../world/" target="_self">境外DNS</a>
+                        <a href="../telecom/" target="_self">中国电信DNS</a>
+                        <a href="../mobile/" target="_self">中国移动DNS</a>
+                        <a href="../unicom/" target="_self">中国联通DNS</a>
+                        <a href="../dns/" target="_self">DNS解析</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a>在线工具</a>
+                    <div class="dropdown_menu">
+					<a href="../code/" target="_self">Html格式化/压缩</a>
+					<a href="../code_css/" target="_self">CSS格式化/压缩</a>
+					<a href="../code_js/" target="_self">JavaScript格式化/压缩</a>
+					<a href="../json/" target="_self">JSON解析格式化</a>
+					<a href="../base64/" target="_self">Base64编码/解码</a>
+					<a href="https://www.bingdou.cc/" target="_blank" rel="nofollow">更多实用工具</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a>视频音频</a>
+                    <div class="dropdown_menu">
+                        <a href="https://www.bingdou.vip/" target="_blank" rel="nofollow">视频云播</a>
+                        <a href="https://www.bingdou.live/" target="_blank" rel="nofollow">影视直播</a>
+                        <a href="https://music.bingdou.xyz/" target="_blank" rel="nofollow">音乐下载</a>
+                    </div>
+                </li>
+                <li><a href="https://www.bingdou.com.cn/font/" target="_blank" rel="nofollow">字体下载</a></li>
+                <li><a href="https://www.misidao.cn/ai/" target="_blank" rel="nofollow">玩转AI</a></li>
+                <li><a href="https://fuli.fanbing.cc/" target="_blank" rel="nofollow">每日福利</a></li>
+                <li><a href="https://29dns.com/" target="_self">EN</a></li>
+            </ul>
+        </div>
+        <a id="navToggle"><span></span></a>
+    </div>
+</nav>
+<!--移动端的导航-->
+<nav class="m_nav" id="cssmenu">
+    <div class="top clearfix"><span class="closed"></span></div>
+    <div class="logo"><img src="../images/logo.svg"/></div>
+    <ul class="ul" data-in="fadeInDown" data-out="fadeOutUp">
+        <li><a href="../" target="_self">首 页</a></li>
+        <li class="dropdown">
+            <a>公共DNS</a>
+            <div class="dropdown_menu">
+                <a href="../" target="_self">国内DNS</a>
+                <a href="../world/" target="_self">境外DNS</a>
+                <a href="../telecom/" target="_self">中国电信DNS</a>
+                <a href="../mobile/" target="_self">中国移动DNS</a>
+                <a href="../unicom/" target="_self">中国联通DNS</a>
+                <a href="../dns/" target="_self">DNS解析</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a>在线工具</a>
+            <div class="dropdown_menu">
+				<a href="../code/" target="_self">Html格式化/压缩</a>
+				<a href="../code_css/" target="_self">CSS格式化/压缩</a>
+				<a href="../code_js/" target="_self">JavaScript格式化/压缩</a>
+				<a href="../json/" target="_self">JSON解析格式化</a>
+				<a href="../base64/" target="_self">Base64编码/解码</a>
+				<a href="https://www.bingdou.cc/" target="_blank" rel="nofollow">更多实用工具</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a>视频音频</a>
+            <div class="dropdown_menu">
+                <a href="https://www.bingdou.vip/" target="_blank" rel="nofollow">视频云播</a>
+                <a href="https://www.bingdou.live/" target="_blank" rel="nofollow">影视直播</a>
+                <a href="https://music.bingdou.xyz/" target="_blank" rel="nofollow">音乐下载</a>
+            </div>
+        </li>
+        <li><a href="https://www.bingdou.com.cn/font/" target="_blank" rel="nofollow">字体下载</a></li>
+        <li><a href="https://www.misidao.cn/ai/" target="_blank" rel="nofollow">玩转AI</a></li>
+        <li><a href="https://fuli.fanbing.cc/" target="_blank" rel="nofollow">每日福利</a></li>
+        <li><a href="https://29dns.com/" target="_self">EN</a></li>
+    </ul>
+</nav>
+<script>
+$(function() {
+    //超过一定高度导航添加类名
+    var nav = $("header"); //得到导航对象  
+    var win = $(window); //得到窗口对象  
+    var sc = $(document); //得到document文档对象。  
+    win.scroll(function() {
+        if (sc.scrollTop() >= 100) {
+            nav.addClass("on");
+        } else {
+            nav.removeClass("on");
+        }
+    })
+
+    //移动端展开nav
+    $('#navToggle').on('click', function() {
+        $('.m_nav').addClass('open');
+    })
+    //关闭nav
+    $('.m_nav .top .closed').on('click', function() {
+        $('.m_nav').removeClass('open');
+    })
+
+    //二级导航  移动端
+    $(".m_nav .ul li").click(function() {
+        $(this).children("div.dropdown_menu").slideToggle('slow')
+        $(this).siblings('li').children('.dropdown_menu').slideUp('slow');
+    });
+
+});
+</script>

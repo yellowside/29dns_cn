@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSON解析格式化 - 29DNS</title>
+    <meta name="keywords" content="JSON格式化, JSON压缩, JSON美化, JSON校验, JSON在线工具, JSON数据整理, JSON格式化工具, JSON缩进, JSON转字符串, JSON优化, JSON解析, JSON验证, 代码格式化">
+  <meta name="description" content="免费在线JSON格式化与压缩工具，一键美化、校验和压缩JSON数据，提升可读性并节省存储空间。支持语法高亮、错误检测，适用于开发者、数据分析师及前后端调试，让JSON处理更高效！">
+	<meta name="author" content="冰豆">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+<style>
+.json_text-areas {display:flex;gap:20px;flex-wrap:wrap;margin-bottom:40px;}
+.json_textarea {flex:1;min-height:420px;resize:vertical;font-size:1rem;border:1px solid #cad2c5;border-radius:10px;padding:20px;transition:border-color 0.3s,box-shadow 0.3s;}
+.json_textarea:focus {border-color:#2a9d8f;box-shadow:0 0 8px rgba(42,157,143,0.3);outline:none;}
+.json_buttons {display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-bottom:20px;}
+.json_btn {flex:1 1 140px;border-radius:25px;font-weight:600;padding:12px 20px;border:none;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:background-color 0.3s,transform 0.2s;}
+.json_btn:hover {transform:translateY(-3px);}
+.json_btn-primary {background-color:#2a9d8f;color:#fff;}
+.json_btn-warning {background-color:#e9c46a;color:#264653;}
+.json_btn-secondary {background-color:#52796f;color:#fff;}
+.json_btn-outline {background-color:#fff;color:#52796f;border:2px solid #52796f;}
+#json_message {text-align:center;font-size:1.1rem;height:1.5em;color:#2a9d8f;margin-top:10px;}
+@media (max-width:767px) {.json_text-areas {flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<header id="header"></header>	
+<section id="box_shadow" class="width_box" style="margin-top:80px">
+    <p><b>JSON解析格式化</b></p>
+    <div class="json_text-areas">
+      <textarea id="json_input" class="json_textarea" placeholder="在此粘贴你的 JSON 代码..."></textarea>
+      <textarea id="json_output" class="json_textarea" placeholder="结果将在此显示..." readonly></textarea>
+    </div>
+    <div class="json_buttons">
+      <button id="json_formatBtn" class="json_btn json_btn-primary">格式化</button>
+      <button id="json_compressBtn" class="json_btn json_btn-warning">压缩</button>
+      <button id="json_copyBtn" class="json_btn json_btn-secondary">复制</button>
+      <button id="json_clearBtn" class="json_btn json_btn-outline">清空</button>
+    </div>
+    <div id="json_message"></div>
+</section>
+<footer id="footer"></footer>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/js-beautify/1.14.0/beautify.min.js"></script>
+  <script>
+    const input = document.getElementById('json_input');
+    const output = document.getElementById('json_output');
+    const message = document.getElementById('json_message');
+    const copyBtn = document.getElementById('json_copyBtn');
+
+    document.getElementById('json_formatBtn').addEventListener('click', () => {
+      message.textContent = '';
+      try {
+        const parsed = JSON.parse(input.value);
+        const formatted = js_beautify(JSON.stringify(parsed), { indent_size: 2, space_in_empty_paren: true });
+        output.value = formatted;
+      } catch (e) {
+        message.textContent = '无效的 JSON 格式，请检查输入！';
+      }
+    });
+
+    document.getElementById('json_compressBtn').addEventListener('click', () => {
+      message.textContent = '';
+      try {
+        const parsed = JSON.parse(input.value);
+        const compressed = JSON.stringify(parsed);
+        output.value = compressed;
+      } catch (e) {
+        message.textContent = '无效的 JSON 格式，请检查输入！';
+      }
+    });
+
+    copyBtn.addEventListener('click', () => {
+      message.textContent = '';
+      const text = output.value;
+      navigator.clipboard.writeText(text).then(() => {
+        message.textContent = '复制成功！';
+      }).catch(() => {
+        message.textContent = '复制失败，请手动复制。';
+      });
+    });
+
+    document.getElementById('json_clearBtn').addEventListener('click', () => {
+      input.value = '';
+      output.value = '';
+      message.textContent = '';
+    });
+  </script>
+<script>
+$('#header').load('../header.html', function(response, status, xhr) {
+  if (status === "error") {
+    console.error("加载失败");
+  }
+});
+$('#footer').load('../footer.html', function(response, status, xhr) {
+        if (status === "error") {
+            console.error("加载失败");
+        } else {
+            var currentYear = new Date().getFullYear();
+            $('#footer #currentYear').text(currentYear);
+        }
+    });
+</script>
+</body>
+</html>

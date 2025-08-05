@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Html格式化/压缩 - 29DNS</title>
+    <meta name="keywords" content="HTML格式化, HTML压缩, HTML美化, HTML代码优化, HTML在线工具, HTML整理, 网页代码格式化, HTML代码压缩,">
+  <meta name="description" content="免费在线HTML代码格式化与压缩工具，一键美化凌乱的HTML代码或压缩多余空格、注释，提升代码可读性。支持快速整理、验证及优化网页结构，适用于开发者、设计师及SEO优化需求！">
+	<meta name="author" content="冰豆">
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/codemirror.css">
+<link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/theme/mdn-like.css">
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/codemirror.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/js-beautify/1.14.0/beautifier.min.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/mode/xml/xml.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/codemirror/5.65.0/mode/htmlmixed/htmlmixed.js"></script>
+<script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/html-minifier/4.0.0/htmlminifier.min.js"></script>
+</head>
+<body>
+<header id="header"></header>
+<section id="box_shadow" class="width_box" style="margin-top:80px">
+    <p><b>Html 格式化/加密/压缩</b></p>
+    <div class="form-group">
+        <label class="form-label">代码：</label>
+        <div class="form-control-wrap">
+            <textarea id="code" class="textarea textarea-bordered "></textarea>
+        </div>
+    </div>
+    <p>
+        <button class="color blue button" onClick="format()">格式化</button>
+        <button class="color blue button" onClick="compress()">压缩</button>
+        <button class="color blue button" onClick="encode()">加密</button>
+        <button class="color blue button" onClick="reset()">清空</button>
+    </p>
+</section>
+<footer id="footer"></footer>
+<script>
+var defaultvalue = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    Hello World!
+</h1>
+</body>
+</html>`;
+const minify = require('html-minifier').minify;
+$("#code").html(defaultvalue);
+var initcodemirror = CodeMirror.fromTextArea(document.getElementById("code"), {  // 标识到textarea
+    value: defaultvalue,  // 文本域默认显示的文本
+    mode: {name: "htmlmixed"},  // 模式
+    theme: "mdn-like",  // CSS样式选择
+    indentUnit: 2,  // 缩进单位，默认2
+    smartIndent: true,  // 是否智能缩进
+    tabSize: 4,  // Tab缩进，默认4
+    readOnly: false,  // 是否只读，默认false
+    showCursorWhenSelecting: true,
+    lineNumbers: true,  // 是否显示行号
+    lineWrapping: true,
+    matchBrackets: true,
+});
+function format() {
+    initcodemirror.setValue(beautifier.html(initcodemirror.getValue()));
+}
+function compress() {
+    initcodemirror.setValue(minify(initcodemirror.getValue(), {
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        decodeEntities: true,
+        trimCustomFragments: true,
+    }));
+}
+function encode(){
+    var minifyCode =  minify(initcodemirror.getValue(), {
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: true,
+        collapseWhitespace: true,
+        decodeEntities: true,
+        trimCustomFragments: true,
+    })
+    var code = `<script>
+document.write(decodeURIComponent("${encodeURIComponent(minifyCode)}"));
+<\/script>`
+    initcodemirror.setValue(code);
+}
+function reset() {
+    $("#code").val('');
+    initcodemirror.setValue('');
+}
+</script>
+<script>
+$('#header').load('../header.html', function(response, status, xhr) {
+  if (status === "error") {
+    console.error("加载失败");
+  }
+});
+$('#footer').load('../footer.html', function(response, status, xhr) {
+        if (status === "error") {
+            console.error("加载失败");
+        } else {
+            var currentYear = new Date().getFullYear();
+            $('#footer #currentYear').text(currentYear);
+        }
+    });
+</script>
+</body>
+</html>
